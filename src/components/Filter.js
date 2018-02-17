@@ -1,17 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import {
-  Content,
   Grid,
   Row,
   Button,
   Icon,
   Right,
+  Item,
 } from 'native-base';
 
 const Filter = () => {
   return (
-    <Content>
+    <Item>
       <Grid>
         <Row style={{ backgroundColor: '#EFEFED', height: 45 }}>
           <Button iconLeft transparent style={{ paddingRight: 25 }}>
@@ -29,7 +29,7 @@ const Filter = () => {
           </Right>
         </Row>
       </Grid>
-    </Content>
+    </Item>
   );
 };
 

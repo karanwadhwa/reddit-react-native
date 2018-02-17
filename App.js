@@ -4,6 +4,7 @@ import { Container, Spinner } from 'native-base';
 import { Font } from "expo";
 import SearchBarHeader from './src/components/SearchBarHeader';
 import Filter from './src/components/Filter';
+import Results from './src/components/Results';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -31,6 +32,7 @@ export default class App extends React.Component {
       <Container style={{ flex: 1 }}>
       <SearchBarHeader />
       <Filter />
+      <Results />
     </Container>
     );
   }
