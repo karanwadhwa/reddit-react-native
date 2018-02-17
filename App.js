@@ -23,17 +23,17 @@ export default class App extends React.Component {
   render() {
     if (this.state.loading) {
       return (
-        <View>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Spinner color='#FF5700'/>
         </View>
       );
     }
     return (
       <Container style={{ flex: 1 }}>
-      <SearchBarHeader />
-      <Filter />
-      <ListView />
-    </Container>
+        <SearchBarHeader />
+        <Filter />
+        <ListView />
+      </Container>
     );
   }
 }
