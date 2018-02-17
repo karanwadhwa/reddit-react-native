@@ -1,7 +1,11 @@
 import React from 'react';
 import { StyleSheet, Platform, StatusBar, Text, View } from 'react-native';
-import { Spinner, Container, Header, Title, Content, Body, Right, Left, Icon, Button } from 'native-base';
+import {
+  Container, Header, Title, Body,
+  Right, Left, Icon, Button, Spinner, Input, Item,
+  Card, CardItem, } from 'native-base';
 import { Font } from "expo";
+import{ getStatusBarHeight } from 'react-native-status-bar-height';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -26,39 +30,35 @@ export default class App extends React.Component {
       );
     }
     return (
-      <View style={styles.container}>
-        <Header style={styles.header}>{/*
-          <Left>
-            <Button transparent>
-              <Icon name='menu' />
-            </Button>
-          </Left> */}
-          <Body>
-            <Title>reddit-client</Title>
-          </Body>
-          <Right />
-        </Header>
-        <Content>
-          <Text>
-            This is Content Section
-          </Text>
-        </Content>
-      </View>
+      <Container style={styles.container}>
+      <Header searchBar rounded style={styles.header}>
+        <Item>
+          <Icon name="ios-search" />
+          <Input placeholder="Search" />
+          <Icon name="ios-people" />
+        </Item>
+        <Button transparent>
+          <Text>Search</Text>
+        </Button>
+      </Header>
+    </Container>
     );
   }
 }
-
+console.log(getStatusBarHeight());
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    ...Platform.select({
+/*     ...Platform.select({
         android: {
           // avoid statusbar overlap in android
-          marginTop: StatusBar.currentHeight
+          paddingTop: StatusBar.currentHeight
         }
-    })
+    }) */
   },
   header: {
     backgroundColor: "#FF5700",
+    paddingTop: getStatusBarHeight(),
+    height: 54 + getStatusBarHeight(),
   },
 })
