@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Platform, StatusBar, Text, View } from 'react-native';
 import {
-  Container, Header, Title, Body,
+  Container, Header, Title, Body, Content, Grid, Row,
   Right, Left, Icon, Button, Spinner, Input, Item,
   Card, CardItem, } from 'native-base';
 import { Font } from "expo";
@@ -35,17 +35,35 @@ export default class App extends React.Component {
         <Item>
           <Icon name="ios-search" />
           <Input placeholder="Search" />
-          <Icon name="ios-people" />
+          <Icon name="logo-reddit" />
         </Item>
         <Button transparent>
           <Text>Search</Text>
         </Button>
       </Header>
+      <Content>
+          <Grid>
+            <Row style={{ backgroundColor: '#EFEFED', height: 45 }}>
+              <Button iconLeft transparent style={{ paddingRight: 25 }}>
+                <Icon name='ios-funnel' style={{ fontSize: 20, color: '#A5A4A4', paddingRight: 10 }} />
+                <Text>Sort</Text>
+              </Button>
+              <Button iconLeft transparent style={{ paddingRight: 25 }}>
+                <Icon name='md-list' style={{ fontSize: 25, color: '#A5A4A4', paddingRight: 10 }} />
+                <Text>List</Text>
+              </Button>
+              <Right>
+                <Button iconLeft transparent style={{ paddingRight: 25 }}>
+                  <Icon name='ios-code' style={{ fontSize: 25, color: '#A5A4A4', marginRight: -10 }} />
+                </Button>
+              </Right>
+            </Row>
+          </Grid>
+        </Content>
     </Container>
     );
   }
 }
-console.log(getStatusBarHeight());
 const styles = StyleSheet.create({
   container: {
     flex: 1,
