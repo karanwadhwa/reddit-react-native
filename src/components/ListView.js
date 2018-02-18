@@ -6,11 +6,11 @@ class ListView extends React.Component {
   state = { posts: [] };
 
   componentWillMount() {
-    fetch('https://www.reddit.com/best.json')
+    fetch('https://www.reddit.com/best.json?')
       .then(response => response.json())
       .then(data => {
         const posts = data.data.children.map(data => data.data);
-        this.setState({ posts })
+        this.setState({ posts });
       })
       .catch(err => console.log(err));
   }
@@ -24,7 +24,7 @@ class ListView extends React.Component {
   render() {
     console.log(this.state);
     return (
-      <Content>
+      <Content padder>
         {this.renderPosts()}
       </Content>
     );
