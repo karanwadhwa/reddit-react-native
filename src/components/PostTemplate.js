@@ -1,16 +1,14 @@
 import React from 'react';
-import { StyleSheet, Image } from 'react-native';
-import { Text, Card, CardItem, Body, Badge, Right, } from 'native-base';
+import { StyleSheet, Image, Linking } from 'react-native';
+import { Text, Card, CardItem, Body, Badge, Right, Button } from 'native-base';
 
 const PostTemplate = (props) => {
-  var img;
-  var imgHeight;
+  var url;
   if (props.post.preview) {
-    img = props.post.preview.images[0].source.url;
-    img = img.replace(/amp;/g, '');
-    imgHeight = props.post.preview.images[0].resolutions[0].height
+    url = props.post.preview.images[0].source.url;
+    url = url.replace(/amp;/g, '');
   }
-  console.log(img);
+  console.log(url);
   return (
     <Card>
       <CardItem bordered>
@@ -25,13 +23,18 @@ const PostTemplate = (props) => {
         </Right>
       </CardItem>
       <CardItem cardBody>
-        <Image source={{ uri: img }} style={styles.responsiveImg} />
+        <Image source={{ uri: url }} style={styles.responsiveImg} />
       </CardItem>
-      <CardItem>
+      <CardItem bordered>
         <Body>
           <Text>{props.post.title}</Text>
           <Text note style={{ fontSize: 14 }}>{props.post.selftext}</Text>
         </Body>
+      </CardItem>
+      <CardItem>
+        <Button block onPress={() => { Linking.openURL(props.post.url) }} >
+          <Text>Open Link</Text>
+        </Button>
       </CardItem>
     </Card>
   );
