@@ -8,31 +8,30 @@ const PostTemplate = (props) => {
     url = props.post.preview.images[0].source.url;
     url = url.replace(/amp;/g, '');
   }
-  console.log(url);
   return (
     <Card>
       <CardItem bordered>
         <Body>
-          <Text style={{ fontSize: 12 }}>r/{props.post.subreddit}</Text>
-          <Text note style={{ fontSize: 12 }}>u/{props.post.author}</Text>
+          <Text style={{ fontSize: 12 }}>r/{props.post.item.subreddit}</Text>
+          <Text note style={{ fontSize: 12 }}>u/{props.post.item.author}</Text>
         </Body>
         <Right>
           <Badge style={{ backgroundColor: '#FF5700' }}>
-            <Text style={{ color: 'white', fontSize: 10, marginTop: 2 }}>Score: {props.post.score}</Text>
+            <Text style={{ color: 'white', fontSize: 10, marginTop: 2 }}>Score: {props.post.item.score}</Text>
           </Badge>
         </Right>
       </CardItem>
       <CardItem cardBody>
-        <Image source={{ uri: url }} style={styles.responsiveImg} />
+        <Image source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/cat.gif' }} style={styles.responsiveImg} />
       </CardItem>
       <CardItem bordered>
         <Body>
           <Text>{props.post.title}</Text>
-          <Text note style={{ fontSize: 14 }}>{props.post.selftext}</Text>
+          <Text note style={{ fontSize: 14 }}>{props.post.item.selftext}</Text>
         </Body>
       </CardItem>
       <CardItem>
-        <Button block onPress={() => { Linking.openURL(props.post.url) }} >
+        <Button block onPress={() => { Linking.openURL(props.post.item.url) }} >
           <Text>Open Link</Text>
         </Button>
       </CardItem>

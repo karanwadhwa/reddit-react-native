@@ -1,4 +1,5 @@
 import React from 'react';
+import { FlatList } from 'react-native';
 import { Content } from 'native-base';
 import PostTemplate from './PostTemplate';
 
@@ -15,17 +16,18 @@ class ListView extends React.Component {
       .catch(err => console.log(err));
   }
 
-  renderPosts() {
-    return this.state.posts.map(post =>
-      <PostTemplate key={post.id} post={post} />
-    );
+  renderPosts(post) {
+    return <PostTemplate key={post.id} post={post} />;
   }
 
   render() {
-    console.log(this.state);
     return (
       <Content padder>
-        {this.renderPosts()}
+        <FlatList
+          data={this.state.posts}
+          keyExtractor={(post) => post.id.toString()}
+          renderItem={this.renderPosts}
+        />
       </Content>
     );
   }
